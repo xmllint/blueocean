@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
-        sh '''src/build.sh
+        sh '''sh src/build.sh
 '''
       }
     }
