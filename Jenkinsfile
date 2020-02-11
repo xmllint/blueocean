@@ -1,6 +1,13 @@
 pipeline {
   agent any
   stages {
+    stage('Setup') {
+      steps {
+        echo 'Setup'
+        sh 'src/setup.sh'
+      }
+    }
+
     stage('Build') {
       steps {
         echo 'Build'
@@ -19,6 +26,12 @@ pipeline {
       steps {
         echo 'Deploy'
         sh 'src/deploy.sh'
+      }
+    }
+
+    stage('Clear workspace') {
+      steps {
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
 
