@@ -3,9 +3,9 @@
 TERRAFORM_DIR=".venv/bin/terraform"
 echo "Running setup"
 
-virtualenv .venv
+virtualenv -p python3 .venv
 . .venv/bin/activate
-pip install requirements.txt
+pip3 install awscli
 
 if [ ! -d "${TERRAFORM_DIR}" ]; then
   mkdir "${TERRAFORM_DIR}"
